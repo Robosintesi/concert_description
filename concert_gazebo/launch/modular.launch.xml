@@ -78,6 +78,10 @@
                use_gpu_ray:=$(var use_gpu_ray)
             -r modularbot' ignore)"/> 
 
+    <node if="$(var xbot2)" pkg="xbot2_ros" exec="robot_description_publisher" name="robot_description_publisher" output="screen"> 
+        <param name="robot_description" value="$(var robot_description_xbot)" type="str"/>
+        <param name="robot_description_semantic" value="$(var robot_description_semantic)" type="str"/>
+    </node>
 
     <!-- run gazebo -->
     <group if="$(var gazebo)">
