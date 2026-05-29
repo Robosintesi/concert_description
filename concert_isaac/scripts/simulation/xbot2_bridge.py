@@ -12,6 +12,7 @@ class IsaacXBot2Bridge:
 
         # Socket for communication
         server_socket_path = os.getenv("ISAAC_XBOT2_BRIDGE_SOCK_ADDR", "/tmp/.xbot2_isaac/xbot2_isaac_server.sock")
+        os.makedirs(os.path.dirname(server_socket_path), exist_ok=True)
         if os.path.exists(server_socket_path):
             os.unlink(server_socket_path)
         

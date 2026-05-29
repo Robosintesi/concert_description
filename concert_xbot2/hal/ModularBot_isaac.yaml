@@ -4,4 +4,4 @@ xbotcore_devices:
         names: []
         thread: rt_main
         params:
-          remote_sock_addr: /tmp/.xbot2_concert_isaac/xbot2_isaac_server.sock
+          remote_sock_addr: /tmp/.xbot2_isaac/xbot2_isaac_server.sock
