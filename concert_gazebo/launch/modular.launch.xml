@@ -43,6 +43,10 @@
     <!-- from where the simulation enviornment will be loaded -->
     <arg name="world_file" default="$(find-pkg-share concert_gazebo)/world/empty_world.sdf"/>
 
+    <arg name="spawn_x"   default="0.0"/>
+    <arg name="spawn_y"   default="0.0"/>
+    <arg name="spawn_z"   default="1.0"/>
+    <arg name="spawn_yaw" default="0.0"/>
 
     <!-- Load the URDF/SRDF into the ROS Parameter Server -->
     <let name="robot_description_gz" 
@@ -92,7 +96,10 @@
     
         <node pkg="ros_gz_sim" exec="create" name="urdf_spawner">
             <param name="string" type="str" value="$(var robot_description_gz)"/>
-            <param name="z" value="1.0"/>
+            <param name="z" value="$(var spawn_z)"/>
+            <param name="x" value="$(var spawn_x)"/>
+            <param name="y" value="$(var spawn_y)"/>
+            <param name="Y" value="$(var spawn_yaw)"/>
         </node>
 
         <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge" 
