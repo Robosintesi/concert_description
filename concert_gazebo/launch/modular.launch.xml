@@ -116,7 +116,11 @@
             args="/D435i_camera_front/image@sensor_msgs/msg/Image[gz.msgs.Image
                   /D435i_camera_front/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo
                   /D435i_camera_back/image@sensor_msgs/msg/Image[gz.msgs.Image
-                  /D435i_camera_back/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo">
+                  /D435i_camera_back/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo
+                  /D435i_camera_front/depth_image@sensor_msgs/msg/Image[gz.msgs.Image
+                  /D435i_camera_front/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
+                  /D435i_camera_back/depth_image@sensor_msgs/msg/Image[gz.msgs.Image
+                  /D435i_camera_back/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked">
         </node>
 
     </group>
