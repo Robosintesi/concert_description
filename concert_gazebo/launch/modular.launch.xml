@@ -121,6 +121,9 @@
                   /D435i_camera_front/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
                   /D435i_camera_back/depth_image@sensor_msgs/msg/Image[gz.msgs.Image
                   /D435i_camera_back/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked">
+                
+            <remap from="/D435i_camera_front/image" to="/D435i_camera_front/color/image_raw"/>
+            <remap from="/D435i_camera_back/image"  to="/D435i_camera_back/color/image_raw"/>
         </node>
 
     </group>
