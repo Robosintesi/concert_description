@@ -110,6 +110,14 @@
         <node if="$(var velodyne)" pkg="ros_gz_bridge" exec="parameter_bridge" name="velodyne_bridge"
             args="/VLP16_lidar_front/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
                   /VLP16_lidar_back/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked"/>
+        
+        <!-- Gz D435i camera bridge -->
+        <node if="$(var realsense)" pkg="ros_gz_bridge" exec="parameter_bridge" name="camera_bridge"
+            args="/D435i_camera_front/image@sensor_msgs/msg/Image[gz.msgs.Image
+                  /D435i_camera_front/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo
+                  /D435i_camera_back/image@sensor_msgs/msg/Image[gz.msgs.Image
+                  /D435i_camera_back/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo">
+        </node>
 
     </group>
 
