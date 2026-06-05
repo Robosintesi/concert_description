@@ -102,10 +102,14 @@
             <param name="Y" value="$(var spawn_yaw)"/>
         </node>
 
-        <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge" 
-            args="/VLP16_lidar_back/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked 
-                  /VLP16_lidar_front/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked 
-                  /clock@rosgraph_msgs/msg/Clock[ignition.msgs.Clock"/>
+        <!-- Gz clock bridge -->
+        <node pkg="ros_gz_bridge" exec="parameter_bridge" name="clock_bridge"
+            args="/clock@rosgraph_msgs/msg/Clock[ignition.msgs.Clock"/>
+
+        <!-- Gz Velodyne bridge -->
+        <node if="$(var velodyne)" pkg="ros_gz_bridge" exec="parameter_bridge" name="velodyne_bridge"
+            args="/VLP16_lidar_front/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked
+                  /VLP16_lidar_back/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked"/>
 
     </group>
 
