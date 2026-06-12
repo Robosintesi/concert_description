@@ -1,0 +1,203 @@
+Panels:
+  - Class: rviz_common/Displays
+    Help Height: 0
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Map1
+        - /RobotModel1
+        - /TF1/Frames1
+        - /ArucoPose1
+        - /RobotPath1
+      Splitter Ratio: 0.55
+    Tree Height: 700
+  - Class: rviz_common/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+
+Visualization Manager:
+  Class: ""
+  Displays:
+
+    # ── MAPPA BIM (solo visualizzazione, non usata per localizzazione) ──────
+    - Class: rviz_default_plugins/Map
+      Name: Map
+      Enabled: true
+      Topic:
+        Value: /map
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+        Depth: 1
+      Alpha: 0.8
+      Color Scheme: map
+      Draw Behind: false
+      Use Timestamp: false
+
+    # ── ROBOT MODEL ──────────────────────────────────────────────────────────
+    - Class: rviz_default_plugins/RobotModel
+      Name: RobotModel
+      Enabled: true
+      Robot Description: xbotcore/robot_description
+      TF Prefix: ""
+      Alpha: 0.9
+      Visual Enabled: true
+      Collision Enabled: false
+
+    # ── TF TREE (solo frame rilevanti) ────────────────────────────────────────
+    - Class: rviz_default_plugins/TF
+      Name: TF
+      Enabled: true
+      Show Arrows: false
+      Show Axes: true
+      Show Names: true
+      Marker Scale: 0.5
+      Frame Timeout: 5.0
+      Frames:
+        All Enabled: false
+        map:
+          Value: true
+        odom:
+          Value: true
+        base_link:
+          Value: true
+
+    # ── POSA ARUCO RAW ───────────────────────────────────────────────────────
+    - Class: rviz_default_plugins/PoseWithCovariance
+      Name: ArucoPose
+      Enabled: false
+      Topic:
+        Value: /aruco/pose
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        Depth: 10
+      Shape: Arrow
+      Color: 255; 100; 0
+      Color Style: Unique
+      Arrow Length: 0.8
+      Axes Length: 0.5
+      Axes Radius: 0.02
+
+    # ── TRAIETTORIA PERCORSA (odometria in map frame) ─────────────────────────
+    - Class: rviz_default_plugins/Path
+      Name: RobotPath
+      Enabled: false
+      Topic:
+        Value: /robot_path
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        Depth: 10
+      Color: 100; 220; 100
+      Line Style: Lines
+      Line Width: 0.03
+      Offset:
+        X: 0.0
+        Y: 0.0
+        Z: 0.01
+
+    # ── POSE EKF (output map->base_link stimato) ──────────────────────────────
+    - Class: rviz_default_plugins/Odometry
+      Name: EKF Odometry
+      Enabled: true
+      Topic:
+        Value: /odometry/filtered
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        Depth: 10
+      Color: 0; 180; 255
+      Shape:
+        Arrow Length: 0.6
+        Arrow Radius: 0.05
+      Keep: 50
+      Covariance:
+        Enabled: true
+        Orientation:
+          Alpha: 0.3
+          Color: 255; 255; 127
+          Color Style: Unique
+          Offset: 1.0
+        Position:
+          Alpha: 0.3
+          Color: 204; 51; 204
+        Value: true
+
+    # ── VELODYNE FRONT pointcloud ─────────────────────────────────────────────
+    - Class: rviz_default_plugins/PointCloud2
+      Name: Velodyne Front
+      Enabled: false
+      Topic:
+        Value: /velodyne_front/velodyne_points
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+        Depth: 1
+      Color Transformer: AxisColor
+      Axis: Z
+      Min Color: 0; 0; 255
+      Max Color: 255; 0; 0
+      Size (m): 0.02
+      Style: Flat Squares
+      Decay Time: 0.1
+
+    # ── MARKER ARUCO visibili (da aruco_opencv) ───────────────────────────────
+    - Class: rviz_default_plugins/MarkerArray
+      Name: ArucoDetections
+      Enabled: false
+      Topic:
+        Value: /D435i_camera_front/aruco_detections/markers
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        Depth: 10
+      Namespaces:
+        aruco: true
+
+    # ── GRIGLIA DI RIFERIMENTO ────────────────────────────────────────────────
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Cell Size: 1.0
+      Color: 80; 80; 80
+      Line Style:
+        Line Width: 0.02
+        Value: Lines
+      Normal Cell Count: 0
+      Offset:
+        X: 0.0
+        Y: 0.0
+        Z: 0.0
+      Plane: XY
+      Plane Cell Count: 20
+      Reference Frame: map
+      Alpha: 0.4
+
+  Enabled: true
+  Global Options:
+    Background Color: 25; 25; 35
+    Default Light: true
+    Fixed Frame: map
+    Frame Rate: 25
+
+  Tools:
+    - Class: rviz_default_plugins/Interact
+      Hide Inactive Objects: true
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/PublishPoint
+      Single click: true
+      Topic:
+        Value: /clicked_point
+
+  Value: true
+
+  Views:
+    Current:
+      Class: rviz_default_plugins/TopDownOrtho
+      Name: Top-down (mappa)
+      Scale: 45.0
+      Angle: 0.0
+      X: 5.5
+      Y: -4.5
+      Invert Z Axis: false
+      Near Clip Distance: 0.01
+      Enable Stereo Rendering:
+        Value: false

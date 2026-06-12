@@ -1,0 +1,31 @@
+/**:
+  ros__parameters:
+
+    output_frame: ''
+
+    marker_dict: 5X5_250
+    marker_size: 0.40
+
+
+    image_is_rectified: true
+    image_sub_compressed: false
+
+    image_sub_qos:
+      reliability: 2
+      durability: 2
+      depth: 1
+
+    publish_tf: false
+
+    pose_selector:
+      strategy: REPROJECTION_ERROR
+      debug: false
+
+    aruco:
+      cornerRefinementMethod: 1
+      cornerRefinementWinSize: 5
+      cornerRefinementMaxIterations: 30
+      cornerRefinementMinAccuracy: 0.05
+
+      useAruco3Detection: true
+      minSideLengthCanonicalImg: 32
