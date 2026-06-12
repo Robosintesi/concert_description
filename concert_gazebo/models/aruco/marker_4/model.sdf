@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="aruco_marker_4">
+    <static>true</static>
+    <link name="link">
+      <!-- Support pole: top reaches the panel's lower edge (0.35 m), no overlap -->
+      <visual name="pole">
+        <pose>0 0 0.175 0 0 0</pose>
+        <geometry><cylinder><radius>0.03</radius><length>0.35</length></cylinder></geometry>
+        <material>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.4 0.4 0.4 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+        </material>
+      </visual>
+      <collision name="pole_col">
+        <pose>0 0 0.175 0 0 0</pose>
+        <geometry><cylinder><radius>0.03</radius><length>0.35</length></cylinder></geometry>
+      </collision>
+      <!-- Marker panel 0.50 m, center 0.6 m high; lower edge at 0.35 m -->
+      <!-- Local +Y face carries the texture; world yaw aims it inward. -->
+      <visual name="marker">
+        <pose>0 0.011 0.6 1.5708 0 0</pose>
+        <geometry><box><size>0.50 0.50 0.002</size></box></geometry>
+        <material>
+          <ambient>1.0 1.0 1.0 1</ambient>
+          <diffuse>1.0 1.0 1.0 1</diffuse>
+          <specular>0.0 0.0 0.0 1</specular>
+          <pbr>
+            <metal>
+              <albedo_map>model://aruco/marker_4/materials/textures/marker_4.png</albedo_map>
+              <metalness>0.0</metalness>
+              <roughness>1.0</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="marker_col">
+        <pose>0 0 0.6 0 0 0</pose>
+        <geometry><box><size>0.50 0.04 0.52</size></box></geometry>
+      </collision>
+    </link>
+  </model>
+</sdf>
