@@ -111,7 +111,7 @@ namespace concert_nav2
 		registerDoubleParameter("max_view_angle_deg", 65.0, maxViewAngleRad_, kDegToRad);
 		registerDoubleParameter("max_tilt_rad", 0.20, maxTiltRad_);
 
-		registerBoolParameter("gate_enabled", true, gateEnabled_);
+		registerBoolParameter("gate_enabled", false, gateEnabled_);
 		registerDoubleParameter("gate_xy", 0.50, gateXyBase_);
 		registerDoubleParameter("gate_yaw", 0.35, gateYawBase_);
 		registerDoubleParameter("gate_growth_per_sec", 0.20, gateGrowthPerSec_);
