@@ -14,6 +14,7 @@
     <arg name="realsense" default="false"/>
     <arg name="velodyne" default="false"/>
     <arg name="ultrasound" default="false"/>
+    <arg name="imu" default="false"/>
     <arg name="use_gpu_ray" default="false"/>
 
     <!-- gazebo configuration parameters -->
@@ -56,6 +57,7 @@
                                                        realsense:=$(var realsense)
                                                        velodyne:=$(var velodyne)
                                                        ultrasound:=$(var ultrasound)
+                                                       imu:=$(var imu)
                                                        use_gpu_ray:=$(var use_gpu_ray)
                                                     -r modularbot_gz' ignore)"/>
 
@@ -105,6 +107,10 @@
         <!-- Gz clock bridge -->
         <node pkg="ros_gz_bridge" exec="parameter_bridge" name="clock_bridge"
             args="/clock@rosgraph_msgs/msg/Clock[ignition.msgs.Clock"/>
+
+        <!-- Gz IMU bridge -->
+        <node if="$(var imu)" pkg="ros_gz_bridge" exec="parameter_bridge" name="imu_bridge"
+            args="/imu@sensor_msgs/msg/Imu[gz.msgs.IMU"/>
 
         <!-- Gz Velodyne bridge -->
         <node if="$(var velodyne)" pkg="ros_gz_bridge" exec="parameter_bridge" name="velodyne_bridge"
